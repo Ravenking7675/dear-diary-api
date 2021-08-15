@@ -26,7 +26,7 @@ const storage = multer.diskStorage({
       error = null;
     }
 
-    cb(error, "backend/images");
+    cb(error, "images");
   },
   filename: (req, file, cb ) => {
     const name = file.originalname.toLowerCase().split(' ').join('-');
@@ -61,7 +61,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //Allow image to be fetched from client
-app.use("/images", express.static(path.join("backend/images")))
+app.use("/images", express.static(path.join("images")))
 
 app.all("/*", function(req, res, next){
   res.header('Access-Control-Allow-Origin', '*');
